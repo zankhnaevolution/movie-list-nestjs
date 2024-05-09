@@ -82,7 +82,7 @@ export class MovieController {
     return this.movieService.findOne(id, req.user.id);
   }
 
-  @Put(':id')
+  @Patch(':id')
   @ApiResponse({
     status: 200,
     description: 'Movie record updated successfully'

@@ -47,6 +47,7 @@ export class AuthService {
   }
 
   async findOne(email: string, password: string): Promise < any > {
+    
     const user = await this.UserModel.findOne({
       email
     });
@@ -54,17 +55,17 @@ export class AuthService {
     if(user){
       const isMatch = await bcrypt.compare(password, user.password);
       if(!isMatch){
-        throw new UnauthorizedException();
+        throw new BadRequestException("Email or Password is wrong");
       }
 
       const payload = { id: user._id, email };
-      console.log(payload)
-      console.log(typeof payload)
       return {
         access_token: this.generateAccessToken(payload),
         // access_token: await this.generateAccessToken(payload),
         refresh_token: this.generateRefreshToken(payload)
       }
+    }else{
+      throw new BadRequestException("Email or Password is wrong");
     }
   }
 }

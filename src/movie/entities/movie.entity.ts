@@ -8,7 +8,7 @@ export class Movie {
     title: string
 
     @ApiProperty({
-        required: true
+        required: true,
     })
     img: string
 

@@ -36,7 +36,7 @@ export class MovieService {
     return movieReturn;
   }
 
-  async findAll(findMovieDto: any): Promise <MovieDocument[]> {
+  async findAll(findMovieDto: any): Promise <{ movies: MovieDocument[], totalMovies: number }> {
     console.log(findMovieDto)
     const movies = await this.MovieModel
       .find(
@@ -48,7 +48,13 @@ export class MovieService {
       .limit(findMovieDto.num)
       .skip((findMovieDto.page-1) * findMovieDto.num)
       .populate('user', "email -_id");
-    return movies;
+      
+    const movieCount = await this.MovieModel
+      .find({
+        user: findMovieDto.user_id
+      }).countDocuments();
+
+    return { movies, totalMovies: movieCount };
   }
 
   async findOne(id: string, user_id: string): Promise <any> {
@@ -103,9 +109,11 @@ export class MovieService {
       if(movieUpdate.lastErrorObject?.updatedExisting){
         return movieUpdate.value;
       }else{
+        console.log("Hellooooo")
         throw new NotFoundException();
       }
     }catch(error){
+      console.log(error)
       throw new NotFoundException();
     }
   }

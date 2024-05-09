@@ -27,21 +27,23 @@ export class AuthController {
     let authTokens = await this.authService.findOne(createAuthDto.email, createAuthDto.password);
   
     if(authTokens){
-      res.cookie("refresh_token", authTokens.refresh_token, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "strict",
-        maxAge: 15 * 24 * 60 * 60 * 1000,
-      })
+      // res.cookie("refresh_token", authTokens.refresh_token, {
+      //   httpOnly: true,
+      //   secure: true,
+      //   sameSite: "strict",
+      //   maxAge: 15 * 24 * 60 * 60 * 1000,
+      // })
   
-      return res.json({ access_token: authTokens.access_token });
+      // return res.json({ access_token: authTokens.access_token });
+      return res.json(authTokens);
     }else{
       throw new UnauthorizedException();
     }
   }
 
-  @Get('refresh_token')
-  @ApiCookieAuth()
+  // @ApiCookieAuth()
+  // @Get('refresh_token')
+  @Post('refresh_token')
   @ApiResponse({
     status: 401,
     description: 'Must Provide valid refresh_token cookie'
@@ -51,11 +53,12 @@ export class AuthController {
     description: 'Returns access_token and update cookie with latest refresh_token'
   })
   refreshToken(
+    @Body() body,
     @Req() req: Request,
     @Res() res: Response
   ){
-    const refreshToken = req.cookies['refresh_token'];
-
+    // const refreshToken = req.cookies['refresh_token'];
+    const refreshToken = body.refresh_token;
     if(!refreshToken) throw new UnauthorizedException();
 
     try{
@@ -63,14 +66,14 @@ export class AuthController {
       
       let originalPayload = { id: payload.id, email: payload.email };
   
-      res.cookie('refresh_token', this.authService.generateRefreshToken(originalPayload), {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'strict',
-        maxAge: 15 * 24 * 60 * 60 * 1000
-      });
+      // res.cookie('refresh_token', this.authService.generateRefreshToken(originalPayload), {
+      //   httpOnly: true,
+      //   secure: true,
+      //   sameSite: 'strict',
+      //   maxAge: 15 * 24 * 60 * 60 * 1000
+      // });
   
-      return res.json({ access_token: this.authService.generateAccessToken(originalPayload) });
+      return res.json({ access_token: this.authService.generateAccessToken(originalPayload), refresh_token: this.authService.generateRefreshToken(originalPayload) });
     }catch(error){
       throw new UnauthorizedException();
     }
