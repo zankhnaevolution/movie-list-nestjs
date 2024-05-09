@@ -37,7 +37,6 @@ export class MovieService {
   }
 
   async findAll(findMovieDto: any): Promise <{ movies: MovieDocument[], totalMovies: number }> {
-    console.log(findMovieDto)
     const movies = await this.MovieModel
       .find(
         {
@@ -109,11 +108,9 @@ export class MovieService {
       if(movieUpdate.lastErrorObject?.updatedExisting){
         return movieUpdate.value;
       }else{
-        console.log("Hellooooo")
         throw new NotFoundException();
       }
     }catch(error){
-      console.log(error)
       throw new NotFoundException();
     }
   }
