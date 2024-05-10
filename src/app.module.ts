@@ -18,7 +18,7 @@ import { join } from 'path';
     ConfigModule.forRoot(),
     AuthModule,
     MovieModule,
-    MongooseModule.forRoot('mongodb://localhost:27017/movie-list'),
+    MongooseModule.forRoot(process.env.MONGODB_URL),
     JwtModule.register({
       global: true,
       secret: jwtConstants.secret,
