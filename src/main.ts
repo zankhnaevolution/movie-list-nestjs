@@ -14,7 +14,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
-      "https://movie-list-next-js.vercel.app/"
+      "https://movie-list-next-js.vercel.app"
     ],
   });
 
