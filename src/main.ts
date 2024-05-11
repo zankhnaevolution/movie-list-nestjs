@@ -13,9 +13,7 @@ async function bootstrap() {
   app.use(cookieParser())
 
   app.enableCors({
-    origin: [
-      "https://movie-list-next-js.vercel.app"
-    ],
+    origin: 'https://movie-list-next-js.vercel.app/',
   });
 
   app.useStaticAssets(join(__dirname, "../", "uploads"), {
