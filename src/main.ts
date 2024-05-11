@@ -12,7 +12,9 @@ async function bootstrap() {
   
   app.use(cookieParser())
 
-  // app.enableCors();
+  app.enableCors({
+    origin: '*',
+  });
 
   app.useStaticAssets(join(__dirname, "../", "uploads"), {
     index: false,
