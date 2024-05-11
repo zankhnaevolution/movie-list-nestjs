@@ -7,12 +7,9 @@ import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  app.enableCors()
   
   app.use(cookieParser())
-
-  app.enableCors({
-    origin: 'https://movie-list-next-js.vercel.app/',
-  });
 
   // app.enableCors({
   //   allowedHeaders: ['content-type'],
@@ -26,17 +23,17 @@ async function bootstrap() {
     // credentials: true,
   // }); 
 
-  app.enableCors({
-    origin: [
-      /^(.*)/,
-    ],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
-    optionsSuccessStatus: 200,
-    credentials: true,
-    allowedHeaders:
-      'Origin,X-Requested-With,Content-Type,Accept,Authorization,authorization,X-Forwarded-for',
-  })
+  // app.enableCors({
+  //   origin: [
+  //     /^(.*)/,
+  //   ],
+  //   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  //   preflightContinue: false,
+  //   optionsSuccessStatus: 200,
+  //   credentials: true,
+  //   allowedHeaders:
+  //     'Origin,X-Requested-With,Content-Type,Accept,Authorization,authorization,X-Forwarded-for',
+  // })
 
   app.useStaticAssets(join(__dirname, "../", "uploads"), {
     index: false,

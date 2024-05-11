@@ -7,20 +7,8 @@ const path_1 = require("path");
 const cookieParser = require("cookie-parser");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    app.enableCors();
     app.use(cookieParser());
-    app.enableCors({
-        origin: 'https://movie-list-next-js.vercel.app/',
-    });
-    app.enableCors({
-        origin: [
-            /^(.*)/,
-        ],
-        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        preflightContinue: false,
-        optionsSuccessStatus: 200,
-        credentials: true,
-        allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization,authorization,X-Forwarded-for',
-    });
     app.useStaticAssets((0, path_1.join)(__dirname, "../", "uploads"), {
         index: false,
         prefix: "/uploads",
