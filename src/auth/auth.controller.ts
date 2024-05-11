@@ -13,6 +13,11 @@ export class AuthController {
     private jwtService: JwtService
   ) {}
 
+  @Get('')
+  getHello(){
+    return "Hello World!!!"
+  }
+
   @Post('signup')
   @HttpCode(200)
   create(@Body() createAuthDto: CreateAuthDto) {
