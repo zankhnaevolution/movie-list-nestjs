@@ -26,6 +26,18 @@ async function bootstrap() {
     // credentials: true,
   // }); 
 
+  app.enableCors({
+    origin: [
+      /^(.*)/,
+    ],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 200,
+    credentials: true,
+    allowedHeaders:
+      'Origin,X-Requested-With,Content-Type,Accept,Authorization,authorization,X-Forwarded-for',
+  })
+
   app.useStaticAssets(join(__dirname, "../", "uploads"), {
     index: false,
     prefix: "/uploads",
