@@ -9,9 +9,6 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.use(cookieParser());
     app.enableCors({
-        origin: 'https://movie-list-next-js.vercel.app/',
-    });
-    app.enableCors({
         origin: [
             /^(.*)/,
         ],

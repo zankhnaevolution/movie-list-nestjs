@@ -10,9 +10,9 @@ async function bootstrap() {
   
   app.use(cookieParser())
 
-  app.enableCors({
-    origin: 'https://movie-list-next-js.vercel.app/',
-  });
+  // app.enableCors({
+  //   origin: 'https://movie-list-next-js.vercel.app/',
+  // });
 
   // app.enableCors({
   //   allowedHeaders: ['content-type'],
