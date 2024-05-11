@@ -5,7 +5,7 @@ import { UpdateMovieDto } from './dto/update-movie.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
-import { AuthGuard } from 'src/auth/auth.guard';
+import { AuthGuard } from '../../src/auth/auth.guard';
 import { ApiBearerAuth, ApiConsumes, ApiHeader, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 const storage = diskStorage({
