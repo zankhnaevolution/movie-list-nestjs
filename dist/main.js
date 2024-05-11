@@ -6,9 +6,7 @@ const swagger_1 = require("@nestjs/swagger");
 const path_1 = require("path");
 const cookieParser = require("cookie-parser");
 async function bootstrap() {
-    const app = await core_1.NestFactory.create(app_module_1.AppModule, {
-        cors: true
-    });
+    const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.use(cookieParser());
     app.enableCors({
         origin: 'https://movie-list-next-js.vercel.app/',
