@@ -11,7 +11,9 @@ async function bootstrap() {
     });
     app.use(cookieParser());
     app.enableCors({
-        origin: '*',
+        origin: [
+            "https://movie-list-next-js.vercel.app/"
+        ],
     });
     app.useStaticAssets((0, path_1.join)(__dirname, "../", "uploads"), {
         index: false,
