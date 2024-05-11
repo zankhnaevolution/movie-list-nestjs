@@ -6,9 +6,10 @@ const swagger_1 = require("@nestjs/swagger");
 const path_1 = require("path");
 const cookieParser = require("cookie-parser");
 async function bootstrap() {
-    const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    const app = await core_1.NestFactory.create(app_module_1.AppModule, {
+        cors: true
+    });
     app.use(cookieParser());
-    app.enableCors();
     app.useStaticAssets((0, path_1.join)(__dirname, "../", "uploads"), {
         index: false,
         prefix: "/uploads",
