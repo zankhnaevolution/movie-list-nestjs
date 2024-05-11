@@ -24,7 +24,7 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
-import { Movie, MovieDocument } from '../../src/schema/movie.schema';
+import { Movie, MovieDocument } from '../schema/movie.schema';
 import { Model } from 'mongoose';
 export declare class MovieService {
     private MovieModel;

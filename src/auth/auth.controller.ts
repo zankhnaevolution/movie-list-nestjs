@@ -1,8 +1,8 @@
-import { Controller, Post, Body, HttpCode, UseGuards, Get, Res, Req, UnauthorizedException } from '@nestjs/common';
+import { Controller, Post, Body, HttpCode, Get, Res, Req, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
-import { ApiCookieAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Request, Response } from 'express';
 
 @ApiTags('User')

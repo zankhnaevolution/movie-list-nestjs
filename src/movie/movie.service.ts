@@ -2,8 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
 import { InjectModel } from '@nestjs/mongoose';
-// import { Movie, MovieDocument } from 'src/schema/movie.schema';
-import { Movie, MovieDocument } from '../../src/schema/movie.schema';
+import { Movie, MovieDocument } from '../schema/movie.schema';
 import { Model } from 'mongoose';
 import * as fs from 'fs';
 

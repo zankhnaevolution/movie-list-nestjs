@@ -1,10 +1,9 @@
-import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-// import { User, UserDocument } from 'src/schema/user.schema';
-import { User, UserDocument } from '../../src/schema/user.schema';
+import { User } from '../schema/user.schema';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { jwtConstants } from './constants';
 
@@ -62,7 +61,6 @@ export class AuthService {
       const payload = { id: user._id, email };
       return {
         access_token: this.generateAccessToken(payload),
-        // access_token: await this.generateAccessToken(payload),
         refresh_token: this.generateRefreshToken(payload)
       }
     }else{

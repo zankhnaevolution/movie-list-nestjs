@@ -20,7 +20,7 @@ const update_movie_dto_1 = require("./dto/update-movie.dto");
 const platform_express_1 = require("@nestjs/platform-express");
 const multer_1 = require("multer");
 const path_1 = require("path");
-const auth_guard_1 = require("../../src/auth/auth.guard");
+const auth_guard_1 = require("../auth/auth.guard");
 const swagger_1 = require("@nestjs/swagger");
 const storage = (0, multer_1.diskStorage)({
     destination: './uploads/',

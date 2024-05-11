@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MovieService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
-const movie_schema_1 = require("../../src/schema/movie.schema");
+const movie_schema_1 = require("../schema/movie.schema");
 const mongoose_2 = require("mongoose");
 const fs = require("fs");
 let MovieService = class MovieService {
