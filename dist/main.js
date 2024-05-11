@@ -9,7 +9,7 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.use(cookieParser());
     app.enableCors({
-        origin: true,
+        origin: 'https://movie-list-next-js.vercel.app/',
     });
     app.useStaticAssets((0, path_1.join)(__dirname, "../", "uploads"), {
         index: false,

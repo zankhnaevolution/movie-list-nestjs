@@ -10,9 +10,9 @@ async function bootstrap() {
   
   app.use(cookieParser())
 
-  // app.enableCors({
-  //   origin: 'https://movie-list-next-js.vercel.app/',
-  // });
+  app.enableCors({
+    origin: 'https://movie-list-next-js.vercel.app/',
+  });
 
   // app.enableCors({
   //   allowedHeaders: ['content-type'],
@@ -20,11 +20,11 @@ async function bootstrap() {
   //   credentials: true,
   // }); 
 
-  app.enableCors({
+  // app.enableCors({
     // allowedHeaders: ['content-type'],
-    origin: true,
+    // origin: true,
     // credentials: true,
-  }); 
+  // }); 
 
   app.useStaticAssets(join(__dirname, "../", "uploads"), {
     index: false,
