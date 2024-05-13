@@ -23,7 +23,7 @@ const path_1 = require("path");
 const auth_guard_1 = require("../auth/auth.guard");
 const swagger_1 = require("@nestjs/swagger");
 const storage = (0, multer_1.diskStorage)({
-    destination: './uploads/',
+    destination: './tmp/',
     filename: (req, file, cb) => {
         const name = file.originalname.split(".")[0];
         const time = Date.now();

@@ -9,9 +9,9 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.enableCors();
     app.use(cookieParser());
-    app.useStaticAssets((0, path_1.join)(__dirname, "../", "uploads"), {
+    app.useStaticAssets((0, path_1.join)(__dirname, "../", "tmp"), {
         index: false,
-        prefix: "/uploads",
+        prefix: "/tmp",
     });
     const config = new swagger_1.DocumentBuilder()
         .addBearerAuth()
