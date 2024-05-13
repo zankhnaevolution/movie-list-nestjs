@@ -9,7 +9,7 @@ import { AuthGuard } from '../auth/auth.guard';
 import { ApiBearerAuth, ApiConsumes, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 const storage = diskStorage({
-  destination: './tmp/',
+  destination: './uploads/',
   filename: (req, file, cb) => {
     const name = file.originalname.split(".")[0];
     const time = Date.now();
