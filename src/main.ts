@@ -35,14 +35,10 @@ async function bootstrap() {
   //     'Origin,X-Requested-With,Content-Type,Accept,Authorization,authorization,X-Forwarded-for',
   // })
 
-  app.useStaticAssets(join(__dirname, "../", "tmp"), {
+  app.useStaticAssets(join(__dirname, "../", "uploads"), {
     index: false,
-    prefix: "/tmp",
-  });
-  // app.useStaticAssets(join(__dirname, "../", "uploads"), {
-  //   index: false,
-  //   prefix: "/uploads",
-  // })
+    prefix: "/uploads",
+  })
 
   const config = new DocumentBuilder()
     .addBearerAuth()
